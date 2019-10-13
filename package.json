@@ -5,5 +5,9 @@
   "main": "src/monitor-scrollbar-width.js",
   "scripts": {},
   "author": "s5nw",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/s5nw/monitor-scrollbar-width"
+  }
 }
