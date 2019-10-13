@@ -6,3 +6,7 @@ Detect and monitor the scrollbar width on window resize. Optionally writes a css
 - Init: ```monitorScrollbar.init();```
 - Init with options: ```monitorScrollbar.init({ writeCssProperty: true, cssPropertyName: '--scrollbarWidth',});```
 - Destroy: ```monitorScrollbar.destroy();```
+
+
+## Example
+https://codepen.io/s5nw/pen/VwweEYW
