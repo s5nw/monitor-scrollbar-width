@@ -14,6 +14,7 @@
     var supports = !!root.addEventListener // Feature test
     var settings // Placeholder variables
     var resizeTick
+    var lastScrollbarWidth = null
     var currentScrollbarWidth = 0
 
     // Default settings
@@ -69,6 +70,14 @@
 
     var updateScrollbarWidth = function () {
         currentScrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+
+        if (currentScrollbarWidth !== lastScrollbarWidth) {
+            lastScrollbarWidth = currentScrollbarWidth
+
+            if (settings.writeCssProperty) {
+                updateCssProperty()
+            }
+        }
     }
 
     var updateCssProperty = function () {
@@ -79,13 +88,9 @@
     }
 
     var checkScrollbar = function () {
-        window.cancelAnimationFrame(resizeTick)
         resizeTick = window.requestAnimationFrame(function () {
             updateScrollbarWidth()
-
-            if (settings.writeCssProperty) {
-                updateCssProperty()
-            }
+            checkScrollbar()
         })
     }
 
@@ -99,7 +104,7 @@
         if (!settings) return
 
         // Remove event listeners
-        window.removeEventListener('resize', checkScrollbar, false)
+        window.cancelAnimationFrame(resizeTick)
 
         // Reset variables
         settings = null
@@ -119,9 +124,6 @@
 
         // Merge user options
         settings = extend(defaults, options || {})
-
-        // Listen for resize event
-        window.addEventListener('resize', checkScrollbar, false)
 
         // Trigger inital check for scrollbar width
         checkScrollbar()
