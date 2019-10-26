@@ -1,13 +1,13 @@
 {
   "name": "monitor-scrollbar-width",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Detect and monitor the scrollbar width on window resize. Optionally writes a css property with the current width.",
   "main": "src/monitor-scrollbar-width.js",
   "scripts": {},
   "author": "s5nw",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/s5nw/monitor-scrollbar-width"
+    "type": "git",
+    "url": "https://github.com/s5nw/monitor-scrollbar-width"
   }
 }
